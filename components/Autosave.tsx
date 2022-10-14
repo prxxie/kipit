@@ -7,10 +7,10 @@ export interface AutosaveProps {
   save: (values: any) => void;
 }
 
-export const Autosave = memo(({ debounce, save }: AutosaveProps) => {
+const Autosave = ({ debounce, save }: AutosaveProps) => {
   const [values, setValues] = useState({})
   let timeout: NodeJS.Timeout;
-  
+
 
   return <FormSpy
     subscription={{ values: true, modified: true }}
@@ -21,8 +21,6 @@ export const Autosave = memo(({ debounce, save }: AutosaveProps) => {
       const checkDirty = Object.keys(props.modified).some(k => props.modified && props.modified[k] === true)
       const difference = diff(values, props.values)
 
-      console.log(checkDirty, difference);
-      
 
       if (checkDirty && Object.keys(difference).length) {
         if (timeout) clearTimeout(timeout)
@@ -33,4 +31,6 @@ export const Autosave = memo(({ debounce, save }: AutosaveProps) => {
         }, debounce)
       }
     }} />
-})
+}
+
+export default memo(Autosave)

@@ -9,7 +9,7 @@ export interface SidebarProps {
   width: number;
 }
 
-export const Sidebar = memo((props: SidebarProps) => {
+const Sidebar = (props: SidebarProps) => {
   const listNotes = useAppSelector(selectListNotes)
 
   const { width } = props;
@@ -33,7 +33,7 @@ export const Sidebar = memo((props: SidebarProps) => {
         <List>
           {
             listNotes.map(note => (
-              <Link href={`/note/${note.id}`}  key={note.id}>
+              <Link href={`/note/${note.id}`} key={note.id}>
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemText sx={{ overflow: 'hidden' }} primary={note.title} secondary={note.content} />
@@ -46,4 +46,6 @@ export const Sidebar = memo((props: SidebarProps) => {
       </Box>
     </Drawer>
   )
-})
+}
+
+export default memo(Sidebar)

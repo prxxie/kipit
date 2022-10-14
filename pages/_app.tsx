@@ -6,8 +6,6 @@ import '@fontsource/roboto/700.css';
 
 import type { AppProps } from 'next/app'
 import { Box, Button, Dialog, DialogContent, Toolbar } from '@mui/material'
-import { Header } from '../components/layouts/Header'
-import { Sidebar } from '../components/layouts/Sidebar'
 import { wrapper } from '../store/store'
 import { memo, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
@@ -16,6 +14,8 @@ import { getProfile, signInWithOAuth } from '../store/slices/authSlice'
 
 import { supabase } from '../utils/supabaseClient'
 import { getListNotes, getNote, updateCurrentNote } from '../store/slices/noteSlice'
+import Header from '../components/layouts/Header';
+import Sidebar from '../components/layouts/Sidebar';
 
 const sidebarWidth = 240;
 

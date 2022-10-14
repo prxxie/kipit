@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import Link from 'next/link';
 import { signOut } from '../../store/slices/authSlice';
 
-export const Header = memo(() => {
+const Header = () => {
   const dispatch = useAppDispatch()
   const { username } = useAppSelector(state => state.auth)
 
@@ -37,4 +37,6 @@ export const Header = memo(() => {
       </AppBar>
     </Box>
   );
-})
+}
+
+export default memo(Header)

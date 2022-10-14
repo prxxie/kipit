@@ -2,10 +2,10 @@ import { Box, SxProps } from "@mui/system"
 import { TextField } from "mui-rff";
 import { memo, useEffect } from "react";
 import { Form } from "react-final-form";
-import { Autosave } from "../components/Autosave";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { actionEditNote, getNote, updateCurrentNote } from "../store/slices/noteSlice";
 import { supabase } from "../utils/supabaseClient";
+import Autosave from "./Autosave";
 
 const textFieldStyle: SxProps = {
   ' .MuiOutlinedInput-notchedOutline': {
