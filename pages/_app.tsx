@@ -38,14 +38,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       supabase
         .channel('public:main_notes')
         .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'main_notes', filter: `user_id=eq.${userId}` }, payload => {
-          console.log('Change received!', payload)
           const newUpdate = payload.new
-
           dispatch(getListNotes())
-          console.log(currentNote, currentNote?.id, (newUpdate as { id: number }).id);
-          
-          if (currentNote?.id === (newUpdate as { id: number }).id)
-            dispatch(updateCurrentNote(newUpdate))
         })
         .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'main_notes' }, payload => {
           console.log('Change received!', payload)
